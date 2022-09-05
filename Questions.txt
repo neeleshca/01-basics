@@ -1,0 +1,75 @@
+1. Use of where keyword. -> https://wiki.haskell.org/Keywords#where - doesn't seem to be anything important. Just some boilerplate.
+
+2. Leibniz equality: in any context, we can replace an object with anything equivalent
+to it. Therefore, in Haskell, we reason about computation by reasoning about
+*equality* of (sub-)expressions.
+I didn't quite get this. For the example given atleast, it feels like it would be the same in other languages. I'm guessing it has something to do with side effects - but not too sure.
+
+3. What's the purpose of unit type/value? IO ()?
+
+
+4. One major difference between Haskell and other programming languages is that
+Haskell uses a "call-by-need" semantics for evaluation, aka "lazy" evaluation.
+What this means is that Haskell does not evaluate arguments before calling
+functions. Instead, expressions are only evaluated when they are needed.
+
+
+
+query :: IO ()
+query = do
+  putStr "What is your name? "
+  n <- getLine
+  let y :: String
+      y = "Welcome to CIS 552 " ++ n
+  putStrLn y
+let?
+Seems to be needed inside do
+
+String concatenation double +.
+
+
+
+
+When we sequence actions of type `IO ()` there is no need to name the
+result. These actions do not return anything interesting. We could name the
+result if we wanted (such as `_m` below);
+Would there be any benefits to  define an unused variable.
+
+I had a slight misunderstanding here, with the wording "no need to name the result"
+It sounded like for functions which do return a result, it is necessary to name the result.
+But for the getLine function, it looks like we can ignore it.
+(In some C++ code, I've seen the return value used only for erroneous conditinos. The error flag would be bassed by reference.)
+
+If return type, can ignore?
+
+
+
+Actually, the compiler won't let you construct a tuple with more
+than 62 values, but it would be bad style to do so anyways
+What's the signifiance of 62?
+
+
+act2 :: (IO (), IO ())
+act2 = (putStr "Hello", putStr "Hello")
+-> Hello1 and Hello2
+
+Since we're running them in different orders.
+
+
+
+There is no limit to
+the number of values that can be stored in a list -> Does this also have the 62 restriction?
+
+
+
+The infix operator `:` constructs a new list, by adding a new element to the
+front of an existing list. (Note, the existing list is not modified.)
+Note, the existing list is not modified -> This looks like the operation is expensive sice it would require a copy. 
+Are there any operations which do not require copy? I think variables are supposed to be immutable which is where this comes from.
+"adding a new element to the front of an existing list" -> I may be too used to how other languages work, but they usually add elements to the end of the list 
+(perhaps for efficiency reasons). There would be ways to append to the end of the list, but why is prepending to the list the "default" way?
+i.e. is there a 
+cons :: [a] -> a -> [a]?
+
+
+Very long line?
