@@ -46,7 +46,7 @@ expressions.
 -}
 
 
-Maybe is pretty strong.
+-- Maybe is pretty strong.
 
 -- Cannot do
 -- m1 :: Maybe Int
@@ -58,10 +58,11 @@ Maybe is pretty strong.
 
 
 
-Why are we returning Maybe a?
+-- Why are we returning Maybe a?
 jn :: Maybe (Maybe a) -> Maybe a
 jn (Just (Just x)) = Just x
-jn (Just Nothing)  || Nothing = Nothing
+jn (Just Nothing) = Nothing
+jn Nothing = Nothing
 -- jn Nothing = Nothing
 
 
@@ -70,3 +71,47 @@ jn (Just Nothing)  || Nothing = Nothing
 
 
 -- same type
+
+
+-- >>> ['a', 'b', 'c']
+-- "abc"
+
+-- >>> 'a' : ['b', 'c']
+-- "abc"
+
+-- >>> 'a' : ('b', 'c')
+-- Couldn't match expected type: [Char]
+--             with actual type: (Char, Char)
+
+-- >>> 'a' : 'b' : 'c' : []
+-- "abc"
+
+-- >>> [] : 'd' : []
+-- Couldn't match type ‘Char’ with ‘[a]’
+-- Expected: [[a]]
+--   Actual: [Char]
+
+-- >>> [] : 'd'
+-- Couldn't match expected type ‘[[a]]’ with actual type ‘Char’
+
+-- >>> [] : [[]]
+-- [[],[]]
+
+-- >>> ['a','b']:'c'
+-- Couldn't match expected type ‘[[Char]]’ with actual type ‘Char’
+
+-- >>> 'a' : ['b', 'c']
+-- "abc"
+
+-- >>> 'a':'b':['c']
+-- "abc"
+
+-- >>>  'a' : "bc"
+-- "abc"
+
+
+-- >>> "b" : ["c"]
+-- ["b","c"]
+
+-- >>> "abc"
+-- "abc"
