@@ -1,11 +1,15 @@
-1. Use of where keyword. -> https://wiki.haskell.org/Keywords#where - doesn't seem to be anything important. Just some boilerplate.
+1. What's the use of where keyword. -> I looked up the docs https://wiki.haskell.org/Keywords#where - doesn't seem to be anything important. Seems to be boilerplate.
 
-2. Leibniz equality: in any context, we can replace an object with anything equivalent
+2. "Leibniz equality: in any context, we can replace an object with anything equivalent
 to it. Therefore, in Haskell, we reason about computation by reasoning about
-*equality* of (sub-)expressions.
-I didn't quite get this. For the example given atleast, it feels like it would be the same in other languages. I'm guessing it has something to do with side effects - but not too sure.
+*equality* of (sub-)expressions."
+I didn't quite get this. 
+For the example given (and the recursions at the end), it feels like it can be the same in other languages. 
+I'm guessing it has something to do with side effects - but not too sure.
 
-3. What's the purpose of unit type/value? IO ()?
+3. What's the purpose of unit type/value? 
+I see it's used in IO ()?
+Is there something analogous in other languages?
 
 
 4. One major difference between Haskell and other programming languages is that
@@ -13,6 +17,28 @@ Haskell uses a "call-by-need" semantics for evaluation, aka "lazy" evaluation.
 What this means is that Haskell does not evaluate arguments before calling
 functions. Instead, expressions are only evaluated when they are needed.
 
+In the section that follows the above statement, it's mostly about short circuiting, which is applicable in other languages as well.
+I was a bit confused by this part till I got to the infinite lists part in the end.
+
+
+5. There seems to be a typo in the following section.
+{-
+In contrast, you can see that if the first argument were `False` instead,
+it does not short circuit and does not trigger the error.
+-}
+and does not trigger the error -> and does trigger the error
+
+
+6. 
+query :: IO ()
+query = do
+  putStr "What is your name? "
+  n <- getLine
+  let y :: String
+      y = "Welcome to CIS 552 " ++ n
+  putStrLn y
+
+The let keyword seems to have been used for the first time here, 
 
 
 query :: IO ()

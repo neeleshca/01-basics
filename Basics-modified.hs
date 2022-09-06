@@ -1034,3 +1034,15 @@ fibs = 1 : 1 : listAdd fibs (tail fibs)
 -- l2 = listAdd (1 : l1) l1
 -- l2 = listAdd (1 : l1) (2 : listAdd (1 : l1) l1)
 -- l2 = 3 : listAdd (l1) (listAdd (1 : l1) l1)
+
+
+-- listInc (x : xs) = x + 1 : listInc xs
+-- allNums = 1 : listInc allNums 
+--   l1 = listInc allNums
+--   l1 = listInc (1 : listInc allNums)
+--   l1 = 2 : listInc (listInc allNums)
+-- allNums = 1 : l1
+-- allNums = 1 : 2 : listInc (listInc allNums)
+-- allNums = 1 : 2 : listInc (l1)
+-- allNums = 1 : 2 : listInc (2 : listInc (listInc allNums))
+-- allNums = 1 : 2 : 3 : listInc (listInc (listInc allNums))

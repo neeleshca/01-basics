@@ -115,3 +115,16 @@ jn Nothing = Nothing
 
 -- >>> "abc"
 -- "abc"
+
+jn1 :: Maybe (Maybe a) -> Maybe a
+jn1 (Just (Just x)) = Just x
+jn1 (Just Nothing) = Nothing
+jn1 Nothing = Nothing
+
+
+jn1' :: Maybe (Maybe a) -> Maybe a
+jn1' (Just (Just x)) = Just x
+jn1' _ = Nothing
+
+-- >>> jn1 Nothing
+-- Nothing
